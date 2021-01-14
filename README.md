@@ -30,14 +30,15 @@
   - [7.1 COMETH app Installation](#cometh-app-installation)
   - [7.2 COMETH app configuration](#cometh-app-configuration)
 
-  
-
-
 ## 1. Introduction
 
-[TO DO]
+### Acknowledgements
+
+I would like to acknowledge the extensive technical help and support provided by [Matin Braun](https://www.hidih.org/research/health-data) on deNBI, OpenStack cloud etc) and Eric Carmichael (https://ericcarmichael.com/) on (Codalabv2).
 
 ---
+
+[TO DO]
 
 ### Before we start
 
