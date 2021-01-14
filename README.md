@@ -246,7 +246,56 @@ If all went well, the VM overview at ```Project > Compute > Instances``` and the
 
 ## 4. SSH into your VM
 
+Add the following to your `~/.ssh/config` file. Doing this allows us to access the VMs directly from the local terminal without having to go through a jump host. Make sure to use the correct **User** this is the ELIXIR username provided in the deNBI Profile page, see [here](#2-deNBI-dashboard). Also the location and file `~/.ssh/mmc.key` should have your **private SSH key**, which is the counterpart of the **public SSH key** stored in deNBI dashboard, see [here](#2-deNBI-dashboard).
+
+```
+#-------------------------------------------
+# Berlin deNBI
+#-------------------------------------------
+
+Host denbi-jumphost-01.bihealth.org
+  User ashwinkr
+  IdentityFile ~/.ssh/mmc.key
+  ServerAliveInterval 120
+
+Host 172.16.103.* 172.16.114.203
+  ProxyJump denbi-jumphost-01.bihealth.org
+  IdentityFile ~/.ssh/mmc.key
+  ServerAliveInterval 120
+  
+```
+Hopefully, after this you can login to the VM by simply executing the following in your terminal 
+
+```
+ssh ubuntu@172.16.114.203
+ssh ubuntu@172.16.103.93
+ssh ubuntu@172.16.103.94
+ssh ubuntu@172.16.103.180
+```
+
+You migh get a message like shown below, simply type `yes` and you will be in your main VM -
+
+```
+The authenticity of host '172.16.114.203 (<no hostip for proxy command>)' can't be established.
+ECDSA key fingerprint is SHA256:Sak9x3waWdiPGhmncyLZBLXdLNq4ovj7Vn/zZTfz5Rw.
+Are you sure you want to continue connecting (yes/no/[fingerprint])
+```
+
 ### Ping test and change Netplan
+
+```
+
+ Ping test
+ 
+ ```
+ 
+ ping 10.0.0.5
+ ping 10.0.0.200
+ ping 10.0.0.127
+ 
+ ```
+
+```
 
 ### Download Docker
 
