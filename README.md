@@ -111,22 +111,47 @@ Under Project Management (on the left), click on your (1) project name and (2) c
 
 > Also, look into the detailed explanation for the various aspects of the [OpenStack dashboard](https://docs.openstack.org/horizon/latest/user/index.html)
 
+> **IMPORTANT:** Make sure to ask the Admins for a public IP address while making the request for resouces for the VMs incase you want your web server (codalabv2 instance) to be visible publicly.
+
 ### Create a network router `dmz-int`
 
 - You have logged into OpenStack dashboard and reached its landing page.
-- Check the initial network topology available to you at -
-``` Projects > Network > Network topology ```
 
-![alt text](/images/01_openstack_network_topology.jpg)
+![alt text](/images/01_openstack_network_landingpage.jpg)
 
+**Figure 1. Openstack dashboard landing page. In boxes, shows way to network topology.**
 
-- The initial network topology would look like Figure 2
+- Check the initial network topology available, you can change between `Topology` and `Graph` views. Use - ``` Projects > Network > Network topology ```
 
-![alt text](/images/02_openstack_network_topology_look.jpg)
+![alt text](/images/02_openstack_network_topology_firstlook.jpg)
 
-The initial Network topology should look like in Figure
+**Figure 2. The initial cloud network topology.**
+
+- Create a new router named `dmz-ext` and connect it to the external network also named `dmz-ext`. Use - ``` Projects > Network > Routers > +Create Router ```
+  
+![alt text](/images/03_openstack_create_router.jpg)
+  
+**Figure 3. Create a new router.**
+
+- Create a new network named `dmz-int`, use `10.0.1.0/24` as the subnet network address and DNS server should be assigned to `172.16.114.8`. Use - ``` Projects > Network > Networks > +Create Network ```
+
+![alt text](/images/04_openstack_create_networks.jpg)
+  
+**Figure 4. Create a new network.**
+
+- Add a route from `dmz-int` subnet to `dmz-ext` router by adding a new interface on the `dmz-ext` router. ``` Projects > Network > Routers > dmz-ext > +Add interface
+
+![alt text](/images/05_link_dmz_ezt_and_dmz_int.jpg)
+  
+**Figure 5. Linking `dmz-ext` and `dmz-int`.**
 
 ### Codalabv2 main instance
+
+- attach instance to this "dmz-int"-network (better create a new instance or go sure your instance is set to detect new network interfaces automatically)
+
+3. Use dmz-int network to create a new instance
+4. security groups need to be adjusted and to allow port 80/443
+
 
 ### Codalab worker instance
 
