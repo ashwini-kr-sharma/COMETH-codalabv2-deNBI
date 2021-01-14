@@ -16,7 +16,6 @@
   - [3.2 Launch VM that will host Codalabv2 main instance](#launch-vm-that-will-host-codalabv2-main-instance)
   - [3.3 Associate the Floating IP address](#associate-the-floating-ip-address)
   - [3.4 Launch VM that will host Codalabv2 worker instance](#launch-vm-that-will-host-codalabv2-worker-instance)
-  - [3.5 Check final network topology](#check-final-network-topology)
 - [4. SSH into your VM](#4-ssh-into-your-vm)
   - [4.1 Ping test and change Netplan](#ping-test-and-change-netplan)
   - [4.2 Download Docker](#download-docker)
@@ -104,7 +103,7 @@ Ok, so now you have a deNBI cloud account and the Admins have sanctioned your pr
 
 ![alt text](/images/01_deNBI_landingpage.jpg)
 
-**Figure 1. deNBI dashboard landing page. In boxes, shows important sections.**
+**Figure 1. deNBI dashboard landing page. In boxes, shown important sections.**
 
 ---
 
@@ -124,7 +123,7 @@ Ok, so now you have a deNBI cloud account and the Admins have sanctioned your pr
 
 ![alt text](/images/02_openstack_network_landingpage.jpg)
 
-**Figure 2. Openstack dashboard landing page. In boxes, shows way to network topology.**
+**Figure 2. Openstack dashboard landing page. In boxes, shown the way to network topology.**
 
 ---
 
@@ -192,19 +191,54 @@ In this section we will create the
 
 ---
 
-#### Associate the Floating IP address
+### Associate the Floating IP address
 
-1. Go to ```Project > Compute > Instances```
+1. Go to ```Project > Compute > Instances```. 
 
-- attach instance to this "dmz-int"-network (better create a new instance or go sure your instance is set to detect new network interfaces automatically)
+2. From the drop down menu, select **Associate Floasting IP**
 
-3. Use dmz-int network to create a new instance
-4. security groups need to be adjusted and to allow port 80/443
+3. From the list of IPs, select `172.16.114.203`. This IP has been associated to the Public IP address which was made available to us by the admins.
 
+4. Make sure to select the port `10.0.1.86`, i.e the one associated to `dmz-int` whcih is visble publicly, as we eventually want to access the webserver running in this VM from our local browsers.
+
+![alt text](/images/09_openstack_associate_floatingIP.jpg)
+
+**Figure 9. Associating floating IPs. **
+
+---
+
+5. Next, make sure that the **security groups**  allow `port 80/443`, i.e `HTTP and HTTPS`. Go to `Project > Network > Security Groups > Manage Rules
+
+6. If these ports or any other required ports (by the webserver) are not open, then open them using `+Add Rule`
+
+![alt text](/images/10_openstack_security_groups.jpg)
+
+**Figure 10. Security groups to allow important ports. **
+
+---
 
 ### Launch VM that will host Codalabv2 worker instance
 
-### Check final network topology
+Now, we will also launch 3 VM instances that will serve as **compute workers**. Repeat the same steps from [above](#launch-vm-that-will-host-codalabv2-main-instance) to launch instance and the the [steps](#associate-the-floating-ip-address) to associate an IP address.
+
+The three worker VMs will be
+
+1. Small memory worker VM with 16GB RAM, 8VPCUs and 20GB storage
+2. Large memory worker VM with 64GB RAM, 32 VCPUs and 20GB storage
+3. GPU based worker VM with 64GB RAM, 16VCPUs and 20GB storage
+
+**The most important differences while launcing these VMs are -**
+
+1. While launching the instance **do not** link the `dmz-int` network in `Network` tab. **Only** select `MapMyCorona-network`
+2. While associating the floating IP only select these IP withe these numbering - `172.16.103.*`
+
+If all went well, the VM overview at ```Project > Compute > Instances``` and the network topology at ``` Projects > Network > Network topology ``` should look like below
+
+![alt text](/images/11_openstack_VM_overview.jpg)
+
+**Figure 11. Final VM overview and VM network topology. **
+
+---
 
 [Back to top](#contents)
 
