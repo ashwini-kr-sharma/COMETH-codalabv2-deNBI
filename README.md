@@ -122,7 +122,7 @@ Under Project Management (on the left), click on your (1) project name and (2) c
 
 - The initial network topology would look like Figure 2
 
-![alt text](/images/01_openstack_network_topology_look.jpg)
+![alt text](/images/02_openstack_network_topology_look.jpg)
 
 The initial Network topology should look like in Figure
 
