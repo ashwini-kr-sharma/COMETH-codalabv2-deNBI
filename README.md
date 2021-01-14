@@ -1,4 +1,4 @@
-## A step-by-step guide to hosting Codalab-v2 instance and compute workers in de.NBI cloud
+## A step-by-step guide to hosting Codalab-v2 instance in de.NBI OpenStack cloud
 
 ### Contents
 
