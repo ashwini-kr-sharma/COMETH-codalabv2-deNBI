@@ -1,4 +1,4 @@
-# A steb-by-step guide to hosting Codalab-v2 instance and compute workers in de.NBI cloud
+## A steb-by-step guide to hosting Codalab-v2 instance and compute workers in de.NBI cloud
 
 ## 0. Prerequisites
 
@@ -26,6 +26,7 @@ Do your account registration and request for a project resources allocation (#CP
 Ok, so now you have a deNBI cloud account and the Admins have sanctioned your project resources. Let's continue with the next steps.
 
 ## 1. Getting familiar with the deNBI dashboard
+
 Goto https://cloud.denbi.de/ and login (click PORTAL LOGIN)
 
 Under Project Management (on the left), click on your (1) project name and (2) click login URL
