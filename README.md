@@ -117,11 +117,12 @@ Under Project Management (on the left), click on your (1) project name and (2) c
 - Check the initial network topology available to you at -
 ``` Projects > Network > Network topology ```
 
-![alt text]("/images/openstack_landing_page.jpeg")
+![alt text](/images/01_openstack_network_topology.jpg)
+
 
 - The initial network topology would look like Figure 2
 
-
+![alt text](/images/01_openstack_network_topology_look.jpg)
 
 The initial Network topology should look like in Figure
 
