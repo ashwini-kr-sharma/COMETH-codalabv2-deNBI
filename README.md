@@ -1,4 +1,4 @@
-## A steb-by-step guide to hosting Codalab-v2 instance and compute workers in de.NBI cloud
+## A step-by-step guide to hosting Codalab-v2 instance and compute workers in de.NBI cloud
 
 ### Contents
 
@@ -17,15 +17,15 @@
   - [3.3 Codalab worker instance](#codalab-worker-instance)
   - [3.4 Check final network topology](#check-final-network-topology)
 - [4. SSH into your VM](#4-ssh-into-your-vm)
-  - [4.1 Ping test and change netplan](#ping-test-and-change-netplan)
+  - [4.1 Ping test and change Netplan](#ping-test-and-change-netplan)
   - [4.2 Download Docker](#download-docker)
-  - [4.3 Download Docker Copmpose](#download-docker-compose)
+  - [4.3 Download Docker Compose](#download-docker-compose)
   - [4.4 Change Docker MTU value](#change-docker-mtu-value)
 - [5. Install Codalabv2 competition instance](#5-install-codalabv2-competition-instance)
   - [5.1 Codalabv2 Installation](#codalabv2-installation)
   - [5.2 Edit the `.env` file](#edit-the-env-file)
-- [6. Install Codalabv2 worker instance](#6-install-codalabv2-competition-instance)
-  - [6.1 Broker UPR](#broker-url)
+- [6. Install Codalabv2 worker instance](#6-install-codalabv2-worker-instance)
+  - [6.1 Broker URL](#broker-url)
 - [7. Install the METEOR COMETH app](#7-install-the-meteor-cometh-app)
   - [7.1 COMETH app Installation](#cometh-app-installation)
   - [7.2 COMETH app configuration](#cometh-app-configuration)
@@ -85,7 +85,7 @@ Perform your account registration and request for a project resources allocation
 2. [Registration](https://cloud.denbi.de/wiki/registration/)
 3. [Resource allocation](https://cloud.denbi.de/wiki/portal/allocation/)
 
-> **NOTE:** Your project request will be approved by the Admins only if you (are a PI) or your PI belongs to deNBI participating German institute. You can of course add as many memebers from participating or non-participating institutes.
+> **NOTE:** Your project request will be approved by the Admins only if you (are a PI) or your PI belongs to deNBI participating German institute. You can of course add as many members from participating or non-participating institutes.
 
 Ok, so now you have a deNBI cloud account and the Admins have sanctioned your project resources. Let's continue with the next steps.
 
@@ -111,7 +111,7 @@ Under Project Management (on the left), click on your (1) project name and (2) c
 
 ## 3. Create VM instances using the OpenStack dashboard
 
-> A detailed explaination of the various aspects of the OpenStack dashboard in Learn more about [OpenStack dashboard](https://docs.openstack.org/horizon/latest/user/index.html)
+> A detailed explanation of the various aspects of the OpenStack dashboard in Learn more about [OpenStack dashboard](https://docs.openstack.org/horizon/latest/user/index.html)
 
 ### Create a network router `dmz-int`
 
@@ -128,11 +128,11 @@ Under Project Management (on the left), click on your (1) project name and (2) c
 
 ## 4. SSH into your VM
 
-### Ping test and change netplan
+### Ping test and change Netplan
 
 ### Download Docker
 
-### Download Docker Copmpose
+### Download Docker Compose
 
 ### Change Docker MTU value
 
