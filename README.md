@@ -34,23 +34,21 @@
 
 ### Acknowledgements
 
-I would like to specifically acknowledge the extensive technical help and support provided by [Matin Braun](https://www.hidih.org/research/health-data) on (issues related to deNBI, OpenStack cloud setup etc) and Eric Carmichael (https://ericcarmichael.com/) on (Codalabv2 installation). More importantly, they are super cool, smart and enthusiastic people to work with. Thanks a ton !! :thumbsup:
+I would like to specifically acknowledge the extensive technical help and support provided by [Matin Braun](https://www.hidih.org/research/health-data) on (issues related to deNBI, OpenStack cloud setup etc) and Eric Carmichael (https://ericcarmichael.com/) on (Codalabv2 installation). More importantly, they are super cool, smart and enthusiastic people to work with. Thanks a ton!! :thumbsup:
 
 ---
 
-[TO DO]
-
 ### Before we start
 
-- ** What is COMETH ?**
+- **What is COMETH ?**
 
-- ** What is Codalab ?**
+- **What is Codalab ?**
 
-- ** What is de.NBI ?**
+- **What is de.NBI ?**
 
-- ** What is ELIXIR ?**
+- **What is ELIXIR ?**
 
-- ** What is de.NBI cloud ?**
+- **What is de.NBI cloud ?**
 
 - ** What is OpenStack ?**
 
@@ -121,7 +119,6 @@ Under Project Management (on the left), click on your (1) project name and (2) c
 
 ### Check final network topology
 
-
 [Back to top](#contents)
 
 ---
@@ -135,7 +132,6 @@ Under Project Management (on the left), click on your (1) project name and (2) c
 ### Download Docker Compose
 
 ### Change Docker MTU value
-
 
 [Back to top](#contents)
 
