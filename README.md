@@ -203,7 +203,7 @@ In this section we will create the
 
 ![alt text](/images/09_openstack_associate_floatingIP.jpg)
 
-**Figure 9. Associating floating IPs. **
+**Figure 9. Associating floating IPs.**
 
 ---
 
@@ -213,7 +213,7 @@ In this section we will create the
 
 ![alt text](/images/10_openstack_security_groups.jpg)
 
-**Figure 10. Security groups to allow important ports. **
+**Figure 10. Security groups to allow important ports.**
 
 ---
 
@@ -236,7 +236,7 @@ If all went well, the VM overview at ```Project > Compute > Instances``` and the
 
 ![alt text](/images/11_openstack_VM_overview.jpg)
 
-**Figure 11. Final VM overview and VM network topology. **
+**Figure 11. Final VM overview and VM network topology.**
 
 ---
 
