@@ -115,35 +115,45 @@ Under Project Management (on the left), click on your (1) project name and (2) c
 
 ### Create a network router `dmz-int`
 
-- You have logged into OpenStack dashboard and reached its landing page.
+- 1. You have logged into OpenStack dashboard and reached its landing page.
 
 ![alt text](/images/01_openstack_network_landingpage.jpg)
 
 **Figure 1. Openstack dashboard landing page. In boxes, shows way to network topology.**
 
-- Check the initial network topology available, you can change between `Topology` and `Graph` views. Use - ``` Projects > Network > Network topology ```
+---
+
+- 2. Check the initial network topology available, you can change between `Topology` and `Graph` views. Use - ``` Projects > Network > Network topology ```
 
 ![alt text](/images/02_openstack_network_topology_firstlook.jpg)
 
 **Figure 2. The initial cloud network topology.**
 
-- Create a new router named `dmz-ext` and connect it to the external network also named `dmz-ext`. Use - ``` Projects > Network > Routers > +Create Router ```
+---
+
+- 3. Create a new router named `dmz-ext` and connect it to the external network also named `dmz-ext`. Use - ``` Projects > Network > Routers > +Create Router ```
   
 ![alt text](/images/03_openstack_create_router.jpg)
   
 **Figure 3. Create a new router.**
 
-- Create a new network named `dmz-int`, use `10.0.1.0/24` as the subnet network address and DNS server should be assigned to `172.16.114.8`. Use - ``` Projects > Network > Networks > +Create Network ```
+---
+
+- 4. Create a new network named `dmz-int`, use `10.0.1.0/24` as the subnet network address and DNS server should be assigned to `172.16.114.8`. Use - ``` Projects > Network > Networks > +Create Network ```
 
 ![alt text](/images/04_openstack_create_networks.jpg)
   
 **Figure 4. Create a new network.**
 
-- Add a route from `dmz-int` subnet to `dmz-ext` router by adding a new interface on the `dmz-ext` router. ``` Projects > Network > Routers > dmz-ext > +Add interface
+---
+
+- Add a route from `dmz-int` subnet to `dmz-ext` router by adding a new interface on the `dmz-ext` router. ``` Projects > Network > Routers > dmz-ext > +Add interface ```
 
 ![alt text](/images/05_link_dmz_ezt_and_dmz_int.jpg)
   
 **Figure 5. Linking `dmz-ext` and `dmz-int`.**
+
+---
 
 ### Codalabv2 main instance
 
