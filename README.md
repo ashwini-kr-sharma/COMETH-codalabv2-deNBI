@@ -50,7 +50,7 @@ I would like to specifically acknowledge the extensive technical help and suppor
 
 - **What is de.NBI cloud ?**
 
-- ** What is OpenStack ?**
+- **What is OpenStack ?**
 
 ----
 
@@ -109,9 +109,21 @@ Under Project Management (on the left), click on your (1) project name and (2) c
 
 ## 3. Create VM instances using the OpenStack dashboard
 
-> A detailed explanation of the various aspects of the OpenStack dashboard in Learn more about [OpenStack dashboard](https://docs.openstack.org/horizon/latest/user/index.html)
+> Also, look into the detailed explanation for the various aspects of the [OpenStack dashboard](https://docs.openstack.org/horizon/latest/user/index.html)
 
 ### Create a network router `dmz-int`
+
+- You have logged into OpenStack dashboard and reached its landing page.
+- Check the initial network topology available to you at -
+``` Projects > Network > Network topology ```
+
+![alt text]("/images/openstack_landing_page.jpeg")
+
+- The initial network topology would look like Figure 2
+
+
+
+The initial Network topology should look like in Figure
 
 ### Codalabv2 main instance
 
