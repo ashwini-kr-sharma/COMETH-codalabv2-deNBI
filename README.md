@@ -34,7 +34,7 @@
 
 ### Acknowledgements
 
-I would like to acknowledge the extensive technical help and support provided by [Matin Braun](https://www.hidih.org/research/health-data) on deNBI, OpenStack cloud etc) and Eric Carmichael (https://ericcarmichael.com/) on (Codalabv2).
+I would like to specifically acknowledge the extensive technical help and support provided by [Matin Braun](https://www.hidih.org/research/health-data) on (issues related to deNBI, OpenStack cloud setup etc) and Eric Carmichael (https://ericcarmichael.com/) on (Codalabv2 installation). More importantly, they are super cool, smart and enthusiastic people to work with. Thanks a ton !! :thumbsup:
 
 ---
 
