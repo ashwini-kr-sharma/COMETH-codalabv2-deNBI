@@ -6,7 +6,7 @@
   - [1.1 Acknowledgements](#acknowledgements)
   - [1.2 Understand some lingo](#before-we-start)
   - [1.3 Prerequisites](#prerequisites)
-- [2. deNBI dashboard](#2-deNBI dashboard)
+- [2. deNBI dashboard](#2-deNBI-dashboard)
   - [2.1 SSH-keys](#ssh-keys)
   - [2.2 Resource modification](#resource-modification)
   - [2.3 Wiki help](#wiki-help)
@@ -22,9 +22,14 @@
   - [4.3 Download Docker Copmpose](#download-docker-compose)
   - [4.4 Change Docker MTU value](#change-docker-mtu-value)
 - [5. Install Codalabv2 competition instance](#5-install-codalabv2-competition-instance)
-  - [5.1 Installation](#installation)
-  - [5.2 Edit `.env` file](#edit-env-file)
-- [6. Install Codalabv2 worker instance](#5-install-codalabv2-competition-instance)
+  - [5.1 Codalabv2 Installation](#codalabv2-installation)
+  - [5.2 Edit the `.env` file](#edit-the-env-file)
+- [6. Install Codalabv2 worker instance](#6-install-codalabv2-competition-instance)
+  - [6.1 Broker UPR](#broker-url)
+- [7. Install the METEOR COMETH app](#7-install-the-meteor-cometh-app)
+  - [7.1 COMETH app Installation](#cometh-app-installation)
+  - [7.2 COMETH app configuration](#cometh-app-configuration)
+
   
 
 
@@ -100,14 +105,65 @@ Under Project Management (on the left), click on your (1) project name and (2) c
 ### OpenStack login
 
 [Back to top](#contents)
+
 ---
 
 ## 3. Create VM instances using the OpenStack dashboard
 
 > A detailed explaination of the various aspects of the OpenStack dashboard in Learn more about [OpenStack dashboard](https://docs.openstack.org/horizon/latest/user/index.html)
 
+### Create a network router `dmz-int`
+
+### Codalabv2 main instance
+
+### Codalab worker instance
+
+### Check final network topology
+
+
 [Back to top](#contents)
+
 ---
 
 ## 4. SSH into your VM
 
+### Ping test and change netplan
+
+### Download Docker
+
+### Download Docker Copmpose
+
+### Change Docker MTU value
+
+
+[Back to top](#contents)
+
+---
+
+## 5. Install Codalabv2 competition instance
+
+### Codalabv2 Installation
+
+### Edit the `.env` file
+
+[Back to top](#contents)
+
+---
+
+## 6. Install Codalabv2 worker instance
+
+### Broker URL
+
+[Back to top](#contents)
+
+---
+
+## 7. Install the METEOR COMETH app
+
+### COMETH app Installation
+
+### COMETH app configuration
+
+[Back to top](#contents)
+
+---
