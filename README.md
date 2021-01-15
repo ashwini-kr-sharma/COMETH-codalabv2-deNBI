@@ -459,7 +459,7 @@ The modified `.env` should look like [this](/.env_modified)
 
 Comment out the **Caddy** section and edit **Django** ports from `8000:8000` to `80:8000`
 
-The modified `docker-compose.yml` should look like [this](/.docker-compose-modified.yml)
+The modified `docker-compose.yml` should look like [this](/docker-compose-modified.yml)
 
 [Back to top](#contents)
 
