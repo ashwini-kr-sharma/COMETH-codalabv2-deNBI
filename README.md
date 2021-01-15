@@ -433,13 +433,19 @@ logout
 
 We will install the Codalab-v2-competition instance from [GitHub](https://github.com/codalab/competitions-v2)
 
+### Codalabv2 Installation
+
 ```
 ssh ubuntu@172.16.114.203
 
 git clone https://github.com/codalab/competitions-v2.git
 
 cd competitions-v2/
+```
 
+### Edit the `.env` file
+
+```
 cp .env_sample .env
 
 vim .env
@@ -449,9 +455,11 @@ vim .env
 
 The modified `.env` should look like [this](/.env_modified)
 
-### Codalabv2 Installation
+### Edit the `docker-compose.yml` file
 
-### Edit the `.env` file
+Comment out the **Caddy** section and edit **Django** ports from `8000:8000` to `80:8000`
+
+The modified `docker-compose.yml` should look like [this](/.docker-compose-modified.yml)
 
 [Back to top](#contents)
 
