@@ -488,6 +488,7 @@ docker run \
     -v /home/ubuntu/codabench:/codabench \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -d \
+    --network host \
     --env-file .env \
     --restart unless-stopped \
     --log-opt max-size=50m \
