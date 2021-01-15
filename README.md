@@ -22,8 +22,10 @@
   - [4.3 Download Docker Compose](#download-docker-compose)
   - [4.4 Change Docker MTU value](#change-docker-mtu-value)
 - [5. Install Codalabv2 competition instance](#5-install-codalabv2-competition-instance)
-  - [5.1 Codalabv2 Installation](#codalabv2-installation)
+  - [5.1 Codalabv2 Download](#codalabv2-download)
   - [5.2 Edit the `.env` file](#edit-the-env-file)
+  - [5.3 Edit the `docker-compose.yml` file](#edit-the-docker-compose-yml-file)
+  - [5.4 Codalabv2 Installation](#codalabv2-installation)
 - [6. Install Codalabv2 worker instance](#6-install-codalabv2-worker-instance)
   - [6.1 Broker URL](#broker-url)
 - [7. Install the METEOR COMETH app](#7-install-the-meteor-cometh-app)
@@ -433,7 +435,7 @@ logout
 
 We will install the Codalab-v2-competition instance from [GitHub](https://github.com/codalab/competitions-v2)
 
-### Codalabv2 Installation
+### Codalabv2 Download
 
 ```
 ssh ubuntu@172.16.114.203
@@ -450,16 +452,27 @@ cp .env_sample .env
 
 vim .env
 
-# replace all instances of "localhost" with the floating IP address of the main VM, i.e. 172.16.114.203
+# 1. Replace all instances of "localhost" with the floating IP address of the main VM, i.e. 172.16.114.203
+# 2. Add `DEBUG=true` at the beginning of the .env file
 ```
 
 The modified `.env` should look like [this](/.env_modified)
 
 ### Edit the `docker-compose.yml` file
 
-Comment out the **Caddy** section and edit **Django** ports from `8000:8000` to `80:8000`
+Comment out the **Caddy** section and edit **Django** ports from `8000:8000` to `80:8000`. To understand the reasoning for doing this, see [here](https://github.com/codalab/competitions-v2/issues/584)
 
 The modified `docker-compose.yml` should look like [this](/docker-compose-modified.yml)
+
+### Codalabv2 Installation
+
+```
+docker-compose up -d
+docker-compose exec django ./manage.py migrate
+docker-compose exec django ./manage.py generate_data
+docker-compose exec django ./manage.py collectstatic --noinput
+
+```
 
 [Back to top](#contents)
 
