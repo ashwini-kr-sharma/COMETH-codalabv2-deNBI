@@ -480,7 +480,22 @@ docker-compose exec django ./manage.py collectstatic --noinput
 
 ## 6. Install Codalabv2 worker instance
 
-### Broker URL
+```
+# Storage
+mkdir /home/ubuntu/codabench
+
+docker run \
+    -v /home/ubuntu/codabench:/tmp/codalab-v2 \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    --env BROKER_URL=pyamqp://8e9dd7e7-ed5e-474b-9189-af9bb6115d8c:2655f280-5200-455e-a552-d5a68e724b0f@broker.codabench.org:9001/2ad529b4-4f64-4545-b30a-84cea29d1e1d \
+    --env BROKER_USE_SSL=TRUE \
+    -d \
+    --restart unless-stopped \
+    --log-opt max-size=1m \
+    --log-opt max-file=3 \
+    codalab/competitions-v2-compute-worker
+
+```
 
 [Back to top](#contents)
 
