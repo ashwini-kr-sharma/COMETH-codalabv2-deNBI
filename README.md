@@ -34,7 +34,7 @@
 
 ### Acknowledgements
 
-I would like to specifically acknowledge the extensive technical help and support provided by [Matin Braun](https://www.hidih.org/research/health-data) on (issues related to deNBI, OpenStack cloud setup etc) and Eric Carmichael (https://ericcarmichael.com/) on (Codalabv2 installation). More importantly, they are super cool, smart and enthusiastic people to work with. Thanks a ton!! :thumbsup:
+I would like to specifically acknowledge the extensive technical help and support provided by [Matin Braun](https://www.hidih.org/research/health-data) on (issues related to deNBI, OpenStack cloud setup etc) and [Eric Carmichael](https://ericcarmichael.com/) on (Codalabv2 installation). More importantly, they are super cool, smart and enthusiastic people to work with. Thanks a ton!! :thumbsup:
 
 ---
 
@@ -273,7 +273,7 @@ ssh ubuntu@172.16.103.94
 ssh ubuntu@172.16.103.180
 ```
 
-You migh get a message like shown below, simply type `yes` and you will be in your main VM -
+You might get a message like shown below, simply type `yes` and you will be in your main VM -
 
 ```
 The authenticity of host '172.16.114.203 (<no hostip for proxy command>)' can't be established.
@@ -281,33 +281,171 @@ ECDSA key fingerprint is SHA256:Sak9x3waWdiPGhmncyLZBLXdLNq4ovj7Vn/zZTfz5Rw.
 Are you sure you want to continue connecting (yes/no/[fingerprint])
 ```
 
-### Ping test and change Netplan
+Once in the VM, so some basic tests of identity and OS by -
+
+```
+pwd
+whoami
+lsb_release -a
+hostnamectl
 
 ```
 
- Ping test
- 
- ```
- 
- ping 10.0.0.5
- ping 10.0.0.200
- ping 10.0.0.127
- 
- ```
+### Ping test and change Netplan
 
+- **Ping test**
+
+From the VM overview and topology views above you will find the internal IP addresses of the VMs. Since we want all the VMs to talk to each other, we can perform some **Ping** tests to verify this.
+
+**Main VM**
+
+```
+#------------------------------------------
+# Log in to worker VM from local terminal
+#------------------------------------------
+
+ssh ubuntu@172.16.114.203
+
+#-------------------------------
+# Ping from main VM to workers
+#-------------------------------
+
+# worker-small-mem
+ping 10.0.0.5
+
+# worker-high-mem
+ping 10.0.0.200
+
+# worker-gpu
+ping 10.0.0.127
+
+#----------------------------------------------
+# Ping from main VM to external public network
+# This check if the VM will be visible publicly
+#----------------------------------------------
+
+# dmz-int
+ping 10.0.1.86
+
+# dmz-ext
+ping 10.0.1.1
+ping 10.0.1.239
+
+logout
+```
+
+**Worker VM**
+
+```
+#---------------------------------------
+# Log in to main VM from local terminal
+#---------------------------------------
+
+ssh ubuntu@172.16.103.93
+# or
+ssh ubuntu@172.16.103.94
+#or
+ssh ubuntu@172.16.103.180
+
+#-------------------------------
+# Ping from worker VM to main VM
+#-------------------------------
+
+# to main VM at MapMyCorona network
+ping 10.0.0.59
+
+#------------------------------------------------------
+# Ping from worker VMs to external public network
+# This check if the VM will be visible publicly
+# This will FAIL !! 
+# this is expected since there are no connection links
+#------------------------------------------------------
+
+# to main VM at the public dmz-int network
+ping 10.0.1.86
+
+# directly to dmz-ext network (public)
+ping 10.0.1.1
+ping 10.0.1.239
+
+logout
 ```
 
 ### Download Docker
 
+We can conveniently download docker through an installation script in the main VM
+
+```
+ssh ubuntu@172.16.114.203
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker ubuntu
+
+logout
+
+ssh ubuntu@172.16.114.203
+
+which docker
+docker --version
+
+logout
+```
+
+In the same way, also install **Docker** in the worker VMs.
+
 ### Download Docker Compose
 
+Next we will download and install `docker-compose` in the main VM.
+
+```
+ssh ubuntu@172.16.114.203
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
 ### Change Docker MTU value
+
+It might happen that the Docker in unable to download packages to contruct the containers. In order to resolve this one must change the **MTU** value in the `docker.service` file. See more information on this [here](https://cloud.denbi.de/wiki/FAQ/#i-can-not-build-docker-images-and-can-not-download-packages-from-inside-of-the-container)
+
+```
+sudo vim /lib/systemd/system/docker.service
+```
+
+In this file, replace `ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock` with `ExecStart=/usr/bin/dockerd -H fd:// --mtu=1440`
+
+For these changes to take place, in the next step - reload and restart the Docker engine.
+
+```
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+logout
+```
 
 [Back to top](#contents)
 
 ---
 
 ## 5. Install Codalabv2 competition instance
+
+We will install the Codalab-v2-competition instance from [GitHub](https://github.com/codalab/competitions-v2)
+
+```
+ssh ubuntu@172.16.114.203
+
+git clone https://github.com/codalab/competitions-v2.git
+
+cd competitions-v2/
+
+cp .env_sample .env
+
+vim .env
+
+# replace all instances of "localhost" with the floating IP address of the main VM, i.e. 172.16.114.203
+```
 
 ### Codalabv2 Installation
 
