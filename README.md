@@ -447,6 +447,8 @@ vim .env
 # replace all instances of "localhost" with the floating IP address of the main VM, i.e. 172.16.114.203
 ```
 
+The modified `.env` should look like [this](/.env_modified)
+
 ### Codalabv2 Installation
 
 ### Edit the `.env` file
