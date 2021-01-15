@@ -488,7 +488,75 @@ docker-compose exec django ./manage.py collectstatic --noinput
 
 ## 7. Install the METEOR COMETH app
 
-### COMETH app Installation
+### COMETH app Installation and configuring MariaDB
+
+```
+git clone https://gitlab.com/mymeteor/meteor/cometh.git
+
+sudo apt update
+
+sudo apt install mariadb-server
+
+sudo systemctl status mariadb
+
+mysql -V
+
+sudo mysql_secure_installation
+
+# When asked for root password simply hit Enter (as we have none) followed by No, since we dont want to have one
+
+sudo mysql -u root -p
+
+# Hit enter as we have not set a root password, if you have set one in the previous step then use that here
+
+# Now in the MariaDB promt execute the following
+CREATE DATABASE cometh;
+SHOW DATABASES;
+USE cometh;
+quit
+
+```
+
+### Install `nodejs`
+
+```
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt install -y nodejs
+
+```
+
+## Install `yarn`
+
+```
+curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update
+sudo apt install --no-install-recommends yarn
+```
+
+### Instal `npm`
+
+```
+# sudo apt install npm
+
+# is this needed ? since npm is already installed with nodejs
+    
+```
+
+### Install python
+
+```
+sudo apt install python3.8 python3-pip
+cd /home/ubuntu/cometh/python
+sudo pip3 install -r requirements.txt
+```
+
+### Install Rbase
+
+```
+sudo apt install r-base
+
+```
 
 ### COMETH app configuration
 
