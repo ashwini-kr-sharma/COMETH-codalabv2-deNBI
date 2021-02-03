@@ -488,7 +488,7 @@ sudo mkdir /mnt/codabench
 sudo chmod 777 /mnt/codabench
 ```
 
-#### Create a `.env` file with these parameters
+#### Create a `.env` file with these parameters in `/mnt/codabench/`
 
 ```
 # Queue URL
@@ -508,7 +508,7 @@ docker run \
     -v /mnt/codabench:/codabench \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -d \
-    --env-file .env \
+    --env-file /mnt/codabench/.env \
     --restart unless-stopped \
     --log-opt max-size=50m \
     --log-opt max-file=3 \
