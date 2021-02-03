@@ -488,7 +488,7 @@ sudo mkdir /mnt/codabench
 sudo chmod 777 /mnt/codabench
 ```
 
-# Create a `.env` file with these parameters
+#### Create a `.env` file with these parameters
 
 ```
 # Queue URL
