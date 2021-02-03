@@ -480,12 +480,32 @@ docker-compose exec django ./manage.py collectstatic --noinput
 
 ## 6. Install Codalabv2 worker instance
 
-```
-# Storage
-mkdir /home/ubuntu/codabench
 
+#### Storage on the mounted volume
+
+```
+sudo mkdir /mnt/codabench
+sudo chmod 777 /mnt/codabench
+```
+
+# Create a `.env` file with these parameters
+
+```
+# Queue URL
+BROKER_URL=pyamqp://8e9dd7e7-ed5e-474b-9189-af9bb6115d8c:2655f280-5200-455e-a552-d5a68e724b0f@broker.codabench.org:9001/f3513b6c-0e0a-4e46-883c-5f5d5a11fc9c
+
+# Location to store submissions/cache -- absolute path!
+HOST_DIRECTORY=/mnt/codabench
+
+# If SSL is enabled, then uncomment the following line
+#BROKER_USE_SSL=True
+```
+
+#### Worker image
+
+```
 docker run \
-    -v /home/ubuntu/codabench:/codabench \
+    -v /mnt/codabench:/codabench \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -d \
     --env-file .env \
