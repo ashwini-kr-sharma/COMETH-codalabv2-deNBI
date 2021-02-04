@@ -524,28 +524,43 @@ docker run \
 ### COMETH app Installation and configuring MariaDB
 
 ```
+
 git clone https://gitlab.com/mymeteor/meteor/cometh.git
+cd cometh
+
+sudo apt update && sudo apt upgrade
+
+sudo apt -y install software-properties-common
+sudo apt-key adv --fetch-keys 'https://mariadb.org/mariadb_release_signing_key.asc'
+sudo add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://mariadb.mirror.triple-it.nl/repo/10.5/ubuntu focal main'
 
 sudo apt update
-
 sudo apt install mariadb-server
-
-sudo systemctl status mariadb
 
 mysql -V
 
-sudo mysql_secure_installation
+sudo mysql_secure_installation # Follow the instructions that comes up
 
-# When asked for root password simply hit Enter (as we have none) followed by No, since we dont want to have one
+sudo systemctl status mariadb
+
+# When asked for root password simply enter what you used during "mysql_secure_installation" step
 
 sudo mysql -u root -p
 
-# Hit enter as we have not set a root password, if you have set one in the previous step then use that here
+# Now inside the MariaDB prompt execute the following
 
-# Now in the MariaDB promt execute the following
 CREATE DATABASE cometh;
 SHOW DATABASES;
 USE cometh;
+
+CREATE USER 'cometh'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON cometh.* TO 'cometh'@'localhost';
+
+delete from dataset;
+delete from dataset cometh;
+
+USE cometh;
+
 quit
 
 ```
@@ -565,6 +580,9 @@ curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt-get update
 sudo apt install --no-install-recommends yarn
+
+yarn install; yarn build
+
 ```
 
 ### Instal `npm`
@@ -593,6 +611,34 @@ sudo apt install r-base
 
 ### COMETH app configuration
 
+```
+cd api
+cp materia.json.example materia.json
+
+# Inside ../cometh/api/materia.json, change the database section as -
+
+# "database": {
+#                "database": "cometh",
+#                "host": "127.0.0.1",
+#                "port": 3306,
+#                "type": "mysql",
+#                "username": "cometh",
+#                "password": "password"
+
+# Inside ../cometh/python/database.properties, change the database section as -
+
+# [Database]
+# user=cometh
+# password=password
+# host=localhost
+# database=cometh
+# port=3306
+
+# Go to ../cometh/api/
+
+yarn start
+ 
+```
 [Back to top](#contents)
 
 ---
