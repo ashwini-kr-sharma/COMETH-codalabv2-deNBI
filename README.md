@@ -563,6 +563,13 @@ USE cometh;
 
 quit
 
+# You are back in terminal, to check if the user and databases were created
+
+mysql -u root -p -D cometh
+
+SHOW DATABASES;
+SELECT User FROM mysql.user;
+
 ```
 
 ### Install `nodejs`
@@ -612,7 +619,8 @@ sudo apt install r-base
 ### COMETH app configuration
 
 ```
-cd api
+# Go to  ../cometh/api/
+
 cp materia.json.example materia.json
 
 # Inside ../cometh/api/materia.json, change the database section as -
