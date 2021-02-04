@@ -595,9 +595,11 @@ yarn install; yarn build
 ### Instal `npm`
 
 ```
-# sudo apt install npm
+which npm
 
-# is this needed ? since npm is already installed with nodejs
+# If you find npm already installed, then skip npm installation below
+
+# sudo apt install npm
     
 ```
 
